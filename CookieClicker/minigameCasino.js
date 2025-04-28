@@ -538,17 +538,17 @@ M.launch = function(){
 						M.betAmount = Game.cookies * M.betChoice / 1000;
 					} else {
 						if(M.betMode == 1){
-							M.betAmount = Math.min(Game.cookies * .1, Game.cookiesPsRawHighest * M.betChoice);
+							M.betAmount = Math.min(Game.cookies * 1, Game.cookiesPsRawHighest * M.betChoice);
 						}else if(M.betMode == 2){
-							M.betAmount = Math.min(Game.cookies * .1, Game.cookiesPsRawHighest * M.betChoice * 60);
+							M.betAmount = Math.min(Game.cookies * 1, Game.cookiesPsRawHighest * M.betChoice * 60);
 						}else if(M.betMode == 3){
-							M.betAmount = Math.min(Game.cookies * .1, Game.cookiesPsRawHighest * M.betChoice * 60 * 60);
+							M.betAmount = Math.min(Game.cookies * 1, Game.cookiesPsRawHighest * M.betChoice * 60 * 60);
 						}else if(M.betMode == 4){
-							M.betAmount = Math.min(Game.cookies * .1, Game.cookiesPsRawHighest * M.betChoice * 60 * 60 * 24);
+							M.betAmount = Math.min(Game.cookies * 1, Game.cookiesPsRawHighest * M.betChoice * 60 * 60 * 24);
 						}else if(M.betMode == 5){
-							M.betAmount = Math.min(Game.cookies * .1, Game.cookiesPsRawHighest * M.betChoice * 60 * 60 * 24 * 30);
+							M.betAmount = Math.min(Game.cookies * 1, Game.cookiesPsRawHighest * M.betChoice * 60 * 60 * 24 * 30);
 						}else if(M.betMode == 6){
-							M.betAmount = Math.min(Game.cookies * .1, Game.cookiesPsRawHighest * M.betChoice * 60 * 60 * 24 * 365.259636 * 10);
+							M.betAmount = Math.min(Game.cookies * 1, Game.cookiesPsRawHighest * M.betChoice * 60 * 60 * 24 * 365.259636 * 10);
 						}
 					}
 				}
