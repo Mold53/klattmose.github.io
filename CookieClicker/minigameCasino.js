@@ -1,6 +1,6 @@
 if(Game.Objects['Chancemaker'].minigame) throw new Error("Casino prevented from loading by already present Chancemaker minigame.");
 
-if(typeof CCSE == 'undefined') Game.LoadMod('https://klattmose.github.io/CookieClicker/' + (0 ? 'Beta/' : '') + 'CCSE.js');
+if(typeof CCSE == 'undefined') Game.LoadMod('https://github.com/Mold53/klattmose.github.io/edit/master/CookieClicker/' + (0 ? 'Beta/' : '') + 'CCSE.js');
 var M = {};
 M.parent = Game.Objects['Chancemaker'];
 M.parent.minigame = M;
@@ -603,6 +603,7 @@ M.launch = function(){
 							} else if(M.hands.dealer.value == 21){
 								M.hands.dealer.cards[1] = this.hiddenCard;
 								outcome = 'dealerblackjack';
+                                this.winsT++;
 								this.phase = this.phases.inactive;
 								
 							} else{
@@ -633,14 +634,20 @@ M.launch = function(){
 						M.hands.dealer.cards[1] = this.hiddenCard;
 						this.buildTable();
 						
-						if(M.hands.player[playerHand].value > 21) outcome = 'bust';
+						if(M.hands.player[playerHand].value > 21){
+                            outcome = 'bust';
+                            this.winsT++;
+                        }
 						else if(M.hands.dealer.value > 21){
 							outcome = 'dealerbust';
 						} 
 						else if(M.hands.dealer.value < M.hands.player[playerHand].value){
 							outcome = 'win';
 						}
-						else if(M.hands.dealer.value > M.hands.player[playerHand].value) outcome = 'lose';
+						else if(M.hands.dealer.value > M.hands.player[playerHand].value){
+                            outcome = 'lose';
+                            this.winsT++;
+                        }
 						else if(M.hands.dealer.value == M.hands.player[playerHand].value){
 							outcome = 'push';
 						}
@@ -662,6 +669,7 @@ M.launch = function(){
 						M.hands.dealer.cards[1] = this.hiddenCard;
 						this.buildTable();							
 						outcome = 'surrender';
+                        this.winsT++;
 						playerHand++;
 						if(playerHand < M.hands.player.length){
 							M.currentPlayerHand = playerHand;
@@ -1096,12 +1104,12 @@ M.launcher = function(){
 	var M = Game.Objects['Chancemaker'].minigame;
 	
 	// Stuff that needs to wait for CCSE but should only run once goes here
-	M.parent.minigameUrl = 'https://klattmose.github.io/CookieClicker/dummyFile.js';
+	M.parent.minigameUrl = 'https://github.com/Mold53/klattmose.github.io/edit/master/CookieClicker/dummyFile.js';
 	M.parent.minigameName = 'Casino';
 	
 	M.name = M.parent.minigameName;
 	M.savePrefix = 'minigameCasino';
-	M.sourceFolder = 'https://klattmose.github.io/CookieClicker/' + (0 ? 'Beta/' : '');
+	M.sourceFolder = 'https://github.com/Mold53/klattmose.github.io/edit/master/CookieClicker/' + (0 ? 'Beta/' : '');
 	M.cardsImage = M.sourceFolder + 'img/phantasypantsCards.png';
 	M.iconsImage = M.sourceFolder + 'img/customIcons.png';
 	M.chancemakerChance = 0.0002;
